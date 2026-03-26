@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: legacy-nginx
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: legacy-nginx
+  template:
+    metadata:
+      labels:
+        app: legacy-nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.21 # Nhớ để đúng version đang chạy
+        ports:
+        - containerPort: 80
