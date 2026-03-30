@@ -1,12 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-nginx-service
+  name: lab-nginx
+  namespace: lab-argocd
+  labels:
+    app: lab-nginx
 spec:
   selector:
-    app: nginx
+    app: lab-nginx
   ports:
-    - protocol: TCP
+    - name: http
       port: 80
       targetPort: 80
-  type: ClusterIP # Trong Lab, chúng ta sẽ dùng Port-forward để test sau
+  type: ClusterIP
